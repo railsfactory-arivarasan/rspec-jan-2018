@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :folder do
-    user nil
+    user
     name "MyString"
     size 1
   end

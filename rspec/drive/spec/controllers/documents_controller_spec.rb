@@ -28,19 +28,14 @@ RSpec.describe DocumentsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Document. As you add validations to Document, be sure to
   # adjust the attributes here as well.
-  let!(:folder){create(:folder)}
   let(:valid_attributes) {
-    doc = attributes_for(:document)
-    doc[:folder_id] = folder.id
-    puts doc
-    
+    skip("Add a hash of attributes valid for your model")
   }
 
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
   }
 
-  let(:document){create(:document)}
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # DocumentsController. Be sure to keep this updated too.
@@ -48,6 +43,7 @@ RSpec.describe DocumentsController, type: :controller do
 
   describe "GET #index" do
     it "returns a success response" do
+      document = Document.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -55,6 +51,7 @@ RSpec.describe DocumentsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
+      document = Document.create! valid_attributes
       get :show, params: {id: document.to_param}, session: valid_session
       expect(response).to be_success
     end
@@ -69,7 +66,7 @@ RSpec.describe DocumentsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      document
+      document = Document.create! valid_attributes
       get :edit, params: {id: document.to_param}, session: valid_session
       expect(response).to be_success
     end

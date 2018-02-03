@@ -1,20 +1,4 @@
 class Document < ApplicationRecord
-  belongs_to :folder
-
-  before_save :strip_name
-
-  validates_presence_of :name, :folder_id
-
-  def make_copy(destination_folder=nil)
-    kopy = self.dup
-    kopy.folder = destination_folder || folder
-    kopy.save
-  end
-
-  private
-
-    def strip_name
-      self.name = self.name.strip
-    end
-
+  validates :name, presence: true, uniqueness: true
+  validates :folder_id, presence: true
 end

@@ -52,6 +52,7 @@ group :test do
   gem 'capybara'
   gem 'geckodriver-helper'
   gem 'simplecov', :require => false
+  gem 'selenium-webdriver'
 end
 
 group :development do

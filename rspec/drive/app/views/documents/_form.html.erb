@@ -11,6 +11,21 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :folder_id %>
+    <%= f.number_field :folder_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :size %>
+    <%= f.number_field :size %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
