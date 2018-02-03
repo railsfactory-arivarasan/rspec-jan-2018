@@ -21,6 +21,17 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
   config.include FactoryBot::Syntax::Methods
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
   # config.include Faker
 
   config.expect_with :rspec do |expectations|
@@ -102,7 +113,7 @@ RSpec.configure do |config|
 end
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :firefox)
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 
 Capybara.default_driver = :selenium
